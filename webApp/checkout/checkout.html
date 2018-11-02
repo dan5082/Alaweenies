@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" href="checkout.css">
+
+    <title>Alaweenie's: Online Ordering</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a id="navSiteName" class="navbar-brand" href="../index.html">Alaweenie's</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                </ul>
+            </div>  
+    </nav>
+
+    <div class="jumbotron text-center">
+        <h1 id="welcomeOnline">Online Ordering & Delivery</h1>
+        <h3>Time to Checkout!</h3>
+        <h3>Hi, User!</h3>
+        <h3>Restaurant Location: City, State</h3>
+</div>
+    </div>
+
+    <div id="checkoutContainer" class="container">
+            <h3>Order Information:</h3>
+            <div class="row">
+              <div class="col-sm-3">
+                    <h4>Order</h4>
+                    <ul>
+                        <li>Hot Dog</li>
+                        <li>Coffee</li>
+                        <li>Side</li>
+                    </ul>
+              </div>
+              <div class="col-sm-3">
+                    <h4>Item Prices</h4>
+                    <ul>
+                            <li>$0.00</li>
+                            <li>$0.00</li>
+                            <li>$0.00</li>
+                    </ul>
+              </div>
+              <div class="col-sm-3">
+                    <h4>Total</h4>
+                    <ul>
+                            <li>$0.00</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <h3>Delivery Address:</h3>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p>123 N. Address St.</p>
+                </div>
+                <div class="col-sm-3">
+                        <p>City, State, Zip Code</p>
+                </div>
+                <div class="col-sm-3">
+                            <p>United States of America</p>
+                </div>
+            </div>
+    
+            <h3>Payment Information:</h3>
+            <div class="row">
+                <div class="col-sm-4">
+                        <h4>Card Number & Name On Card</h4>
+                        <form>
+                                <div class="form-group">
+                                    <label for="number">Card Number:</label>
+                                    <input type="text" class="form-control" id="cardNumber">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Password:</label>
+                                    <input type="password" class="form-control" id="pwd">
+                                </div>
+                        </form>
+                </div>
+                <div class="col-sm-4">
+                        <h4>Expiration Date</h4>
+                        <form>
+                                <div class="form-group">
+                                    <label for="number">Expiration Month:</label>
+                                    <input type="text" class="form-control" id="cardNumber">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Expiration Year:</label>
+                                    <input type="password" class="form-control" id="pwd">
+                                </div>
+                        </form>
+                </div>
+                <div class="col-sm-4">
+                    <h4>CCV:</h4>
+                    <form>
+                            <div class="form-group">
+                                <label for="number">CCV:</label>
+                                <input type="text" class="form-control" id="cardNumber">
+                            </div>
+                    </form>
+                </div>
+            </div>
+    
+            <h3>Order Confirmation:</h3>
+            <div class="row">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-success">Submit Order</button>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-danger">Cancel Order</button>
+                    </div>
+    </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- JS File to Grab Medium Articles -->
+    <script src="checkout.js"></script>
+  </body>
+</html>
