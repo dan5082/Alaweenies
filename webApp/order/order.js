@@ -7,7 +7,7 @@ Developed by Danny Dore, Daniel Niewierowski, Justin Isla, and Aayush Mishra
 
 /*
 -----------------------------------------------------------------------------
-Jquery Function that generates the applet display at the load of page:
+Jquery Function that generates the display at the load of page:
 -----------------------------------------------------------------------------
 */
 $(function () {
