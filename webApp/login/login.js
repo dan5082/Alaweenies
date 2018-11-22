@@ -5,14 +5,6 @@ Developed by Danny Dore, Daniel Niewierowski, Justin Isla, and Aayush Mishra
 2018
 */
 
-/*
------------------------------------------------------------------------------
-Function Name: launchSignUp
-Parameters: None
-Returns: None
-This function launches the sign up feature.
------------------------------------------------------------------------------
-*/
 $(function () {
     //This is a function to launch the sign up feature:
     $('#signUpButt').click(function () {
@@ -26,64 +18,60 @@ $(function () {
         loginBox.append("<div id='firstNameArea' class='form-group'>");
         var emailArea = $("#firstNameArea");
         emailArea.append('<label for="firstName">First Name</label>');
-        emailArea.append('<input type="email" class="form-control" id="firstNameInput" aria-describedby="emailHelp" placeholder="Taylor">');
+        emailArea.append('<input type="email" class="form-control" id="firstNameInput" aria-describedby="emailHelp" placeholder="Taylor" required>');
         loginBox.append('</div>');
 
         loginBox.append("<div id='lastNameArea' class='form-group'>");
-        var testArea = $("#lastNameArea");
-        testArea.append('<label for="lastName">Last Name</label>');
-        testArea.append('<input type="email" class="form-control" id="lastNameInput" aria-describedby="emailHelp" placeholder="Smith">');
+        var lastNameArea = $("#lastNameArea");
+        lastNameArea.append('<label for="lastName">Last Name</label>');
+        lastNameArea.append('<input type="email" class="form-control" id="lastNameInput" aria-describedby="emailHelp" placeholder="Smith" required>');
         loginBox.append('</div>');
 
         loginBox.append("<div id='emailArea' class='form-group'>");
-        var testArea1 = $("#emailArea");
-        testArea1.append('<label for="email">Email Address</label>');
-        testArea1.append('<input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="taylorsmith@outlook.com">');
+        var emailArea = $("#emailArea");
+        emailArea.append('<label for="email">Email Address</label>');
+        emailArea.append('<input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="taylorsmith@outlook.com" required>');
         loginBox.append('</div>');
 
         loginBox.append("<div id='passwordArea' class='form-group'>");
         var passwordArea = $("#passwordArea");
         passwordArea.append('<label for="password">Password</label>');
-        passwordArea.append('<input type="password" class="form-control" id="birthYearInput" placeholder="********">');
+        passwordArea.append('<input type="password" class="form-control" id="birthYearInput" placeholder="********" required>');
         loginBox.append('</div>');
 
         loginBox.append("<div id='phoneNumberArea' class='form-group'>");
-        var testArea2 = $("#phoneNumberArea");
-        testArea2.append('<label for="phoneNumber">Phone Number</label>');
-        testArea2.append('<input type="email" class="form-control" id="phoneNumberInput" aria-describedby="emailHelp" placeholder="123-456-7890">');
+        var phoneNumberArea = $("#phoneNumberArea");
+        phoneNumberArea.append('<label for="phoneNumber">Phone Number</label>');
+        phoneNumberArea.append('<input type="email" class="form-control" id="phoneNumberInput" aria-describedby="emailHelp" placeholder="123-456-7890" required>');
         loginBox.append('</div>');
 
         loginBox.append("<div id='dateOfBirthArea' class='form-group'>");
-        var testArea3 = $("#dateOfBirthArea");
-        testArea3.append('<label for="dateOfBirth">Date of Birth</label>');
-        testArea3.append('<input type="date" class="form-control" id="dateOfBirthInput" aria-describedby="emailHelp" placeholder="mm/dd/yyyy">');
+        var dobArea = $("#dateOfBirthArea");
+        dobArea.append('<label for="dateOfBirth">Date of Birth</label>');
+        dobArea.append('<input type="date" class="form-control" id="dateOfBirthInput" aria-describedby="emailHelp" placeholder="mm/dd/yyyy" required>');
         loginBox.append('</div>');;
 
         loginBox.append("<div id='preferredLocationArea' class='form-group'>");
-        var testArea4 = $("#preferredLocationArea");
-        testArea4.append('<label for="preferredLocation">Preferred Location</label>');
-        testArea4.append('<select class="form-control" id="preferredLocationInput">');
+        var locationArea = $("#preferredLocationArea");
+        locationArea.append('<label for="preferredLocation">Preferred Location</label>');
+        locationArea.append('<select class="form-control" id="preferredLocationInput">');
 
         var preferredLocationInput = $("#preferredLocationInput");
         preferredLocationInput.append('<option>Champaign, IL</option>');
         preferredLocationInput.append('<option>Chicago, IL</option>');
         preferredLocationInput.append('<option>Philidelphia, PA</option>');
         preferredLocationInput.append('<option>Portland, OR</option>');
-        testArea4.append('</select>');
+        locationArea.append('</select>');
         loginBox.append('</div>');
 
         loginBox.append("<div id='hotRewardsArea' class='form-group'>");
-        var testArea5 = $("#hotRewardsArea");
-        testArea5.append('<label for="hotRewards">Join Hot Rewards?</label>');
-        testArea5.append("<div id='helloOne'>");
-        var helloOne = $("#helloOne");
-        helloOne.append('<input type="radio" class="form-check-input" id="yesRewards" name="yesRewards" value="yes" checked>Yes');
-        testArea5.append("</div>");
-        testArea5.append("<div id='helloTwo'>");
-        var helloTwo = $("#helloTwo");
-        helloTwo.append('<input type="radio" class="form-check-input" id="noRewards" name="noRewards" value="no">No');
-        testArea5.append("</div>");
-        loginBox.append('</div>');
+        var rewardsArea = $("#hotRewardsArea");
+        rewardsArea.append('<label for="hotRewards">Join Hot Rewards?</label>');
+        rewardsArea.append('<select class="form-control" id="hotRewardsInput">');
+        var hotRewardsInput = $("#hotRewardsInput");
+        hotRewardsInput.append('<option>Yes</option>');
+        hotRewardsInput.append('<option>No</option>');
+        rewardsArea.append('</select>');
         
         loginBox.append('<button id="registerButt" type="submit" class="btn btn-success">Register</button>');
         loginBox.append('<a id="backButt" href="login.html" role="button" class="btn btn-secondary">Back</a>');
