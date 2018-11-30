@@ -98,13 +98,13 @@ $(function () {
         loginForm.append("<div id='emailArea' class='form-group'>");
         var emailArea = $("#emailArea");
         emailArea.append('<label for="exampleInputEmail1">Email address</label>');
-        emailArea.append('<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">');
+        emailArea.append('<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>');
         loginForm.append('</div>');
 
         loginForm.append("<div id='passwordArea' class='form-group'>");
         var passwordArea = $("#passwordArea");
         passwordArea.append('<label for="exampleInputPassword1">Password</label>');
-        passwordArea.append('<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">');
+        passwordArea.append('<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>');
         loginForm.append('</div>');
 
         loginForm.append('<button id="registerButt" type="submit" class="btn btn-primary">Login</button>');
