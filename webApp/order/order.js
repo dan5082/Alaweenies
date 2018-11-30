@@ -23,47 +23,64 @@ $(function () {
     foodRow.append("<div id='hotDogCol' class='col-sm-3'>");
 
     var hotDogItem = $('#hotDogCol');
-    hotDogItem.append('<form id="hotDogform"></form>');
+    hotDogItem.append('<form id="hotDogform" class="form-group">');
 
     var hotDogForm = $('#hotDogform');
-    hotDogForm.append("<input type='checkbox' name='alaweenie' value='alaweenie'> The Alaweenie $10");
+    hotDogForm.append("<label for='alaweenie'>The Alaweenie (Signature Hot Dog) $10</label>");
+    hotDogForm.append("<input type='number' name='alaweenie' value='alaweenie'>");
     hotDogForm.append('<br>');
-    hotDogForm.append("<input type='checkbox' name='theportlandia' value='theportlandia'> The Portlandia (Vegan) $3");
+    hotDogForm.append("<label for='portlandia'>The Portlandia (Vegan Hot Dog) $3</label>");
+    hotDogForm.append("<input type='number' name='theportlandia' value='theportlandia'>");
     hotDogForm.append('<br>');
-    hotDogForm.append("<input type='checkbox' name='phillycheesedog' value='phillycheesedog'> Philly Cheese Dog $6");
+    hotDogForm.append("<label for='phillyCheese'>Philly Cheese Hot Dog $6</label>");
+    hotDogForm.append("<input type='number' name='phillycheesedog' value='phillycheesedog'>");
     hotDogForm.append('<br>');
-    hotDogForm.append("<input type='checkbox' name='chicagostylehotdog' value='chicagostylehotdog'> Chicago-Style Hot Dog $4");
+    hotDogForm.append("<label for='chicagoStyleHotDog'>Chicago-Style Hot Dog $4</label>");
+    hotDogForm.append("<input type='number' name='chicagostylehotdog' value='chicagostylehotdog'>");
     hotDogForm.append('<br>');
-    hotDogForm.append("<input type='checkbox' name='champaigncorndog' value='champaigncorndog'> Champaign Corn Dog $2");
+    hotDogForm.append("<label for='champaignCornDog'>Champaign Corn Dog $2</label>");
+    hotDogForm.append("<input type='number' name='champaigncorndog' value='champaigncorndog'>");
     hotDogForm.append('<br>');
-    hotDogForm.append("<input type='checkbox' name='halloweenie' value='halloweenie'> Halloweenie (October) $5");
+    hotDogForm.append("<label for='halloweenie'>Halloweenie (October Special) $5</label>");
+    hotDogForm.append("<input type='number' name='halloweenie' value='halloweenie'>");
     hotDogForm.append('<br><br>');
-    hotDogForm.append('<input type="button" value="Select Hot Dog">');
+    hotDogForm.append('<input type="button" value="Select Hot Dog(s)">');
     hotDogForm.append('<br><br>');
+    
+    hotDogItem.append('</form>');
 
-    hotDogItem.append('</div>');
+    foodRow.append('</div>');
 
     //Coffee info:
     foodRow.append("<h3>Coffee:</h3>");
     foodRow.append("<div id='coffeeCol' class='col-sm-3'>");
 
     var coffeeItem = $('#coffeeCol');
-    coffeeItem.append('<form id="coffeeform"></form>');
+    coffeeItem.append('<form id="coffeeForm" class="form-group">');
+    
+    var coffeeForm = $('#coffeeForm');
+    coffeeForm.append("<label for='arabic'>Arabic (Black Coffee) $2</label>");
+    coffeeForm.append("<input type='number' name='arabic' value='arabic'>");
+    coffeeForm.append('<br>');
+    coffeeForm.append("<label for='cappuccino'>Cappuccino (Double Expresso) $3</label>");
+    coffeeForm.append("<input type='number' name='cappuccino' value='cappuccino'>");
+    coffeeForm.append('<br>');
+    coffeeForm.append("<label for='mocha'>Mocha (Chocolate-flavored) $3</label>");
+    coffeeForm.append("<input type='number' name='mocha' value='mocha'>");
+    coffeeForm.append('<br>');
+    coffeeForm.append("<label for='espresso'>Espresso Coffee $2</label>");
+    coffeeForm.append("<input type='number' name='espresso' value='espresso'>");
+    coffeeForm.append('<br>');
+    coffeeForm.append("<label for='latte'>Latte (Espresso & Steamed Milk) $3</label>");
+    coffeeForm.append("<input type='number' name='latte' value='latte'>");
+    coffeeForm.append('<br>');
+    coffeeForm.append("<label for='weeklyFlavor'>Flavor Of The Week $5</label>");
+    coffeeForm.append("<input type='number' name='weeklyflavor' value='weeklyflavor'>");
+    coffeeForm.append('<br><br>');
+    coffeeForm.append('<input type="button" value="Select Coffee(s)">');
+    coffeeForm.append('<br><br>');
 
-    coffeeItem.append("<input type='checkbox' name='arabic' value='arabic'> Arabic $2");
-    coffeeItem.append('<br>');
-    coffeeItem.append("<input type='checkbox' name='cappuccino' value='cappuccino'> Cappuccino $3");
-    coffeeItem.append('<br>');
-    coffeeItem.append("<input type='checkbox' name='mocha' value='mocha'> Mocha $3");
-    coffeeItem.append('<br>');
-    coffeeItem.append("<input type='checkbox' name='espresso' value='espresso'> Espresso $2");
-    coffeeItem.append('<br>');
-    coffeeItem.append("<input type='checkbox' name='latte' value='latte'> Latte $3");
-    coffeeItem.append('<br>');
-    coffeeItem.append("<input type='checkbox' name='weeklyflavor' value='weeklyflavor'> Flavor Of The Week $5");
-    coffeeItem.append('<br><br>');
-    coffeeItem.append('<input type="button" value="Select Coffee">');
-    coffeeItem.append('<br><br>');
+    coffeeItem.append('</form>');
 
     foodRow.append('</div>');
 
@@ -72,22 +89,32 @@ $(function () {
     foodRow.append("<div id='sidesCol' class='col-sm-3'>");
 
     var sidesItem = $('#sidesCol');
-    sidesItem.append('<form id="sidesform"></form>');
+    sidesItem.append('<form id="sidesForm" class="form-group">');
 
-    sidesItem.append("<input type='checkbox' name='frenchfries' value='frenchfries'> French Fries $2");
-    sidesItem.append('<br>');
-    sidesItem.append("<input type='checkbox' name='voodoodonut' value='voodoodonut'> VooDoo Donut $4");
-    sidesItem.append('<br>');
-    sidesItem.append("<input type='checkbox' name='deepdishbites' value='deepdishbites'> Deep Dish Pizza Bites $5");
-    sidesItem.append('<br>');
-    sidesItem.append("<input type='checkbox' name='phillypoundcake' value='phillypoundcake'> Philly Pound Cake $3");
-    sidesItem.append('<br>');
-    sidesItem.append("<input type='checkbox' name='avocadotoast' value='avocadotoast'> Avocado Toast $2");
-    sidesItem.append('<br>');
-    sidesItem.append("<input type='checkbox' name='bureek' value='bureek'> Bureek $3");
-    sidesItem.append('<br><br>');
-    sidesItem.append('<input type="button" value="Select Sides">');
-    sidesItem.append('<br><br>');
+    var sidesForm = $('#sidesForm');
+
+    sidesForm.append("<label for='frenchFries'>French Fries (Steak-frie Style) $2</label>");
+    sidesForm.append("<input type='number' name='frenchfries' value='frenchfries'>");
+    sidesForm.append('<br>');
+    sidesForm.append("<label for='voodoodonut'>VooDoo Donut (Crazy Donut!) $4</label>");
+    sidesForm.append("<input type='number' name='voodoodonut' value='voodoodonut'>");
+    sidesForm.append('<br>');
+    sidesForm.append("<label for='deepDishBites'>Deep Dish Pizza Bites $5</label>");
+    sidesForm.append("<input type='number' name='deepdishbites' value='deepdishbites'>");
+    sidesForm.append('<br>');
+    sidesForm.append("<label for='phillyPoundCake'>Philly Pound Cake $3</label>");
+    sidesForm.append("<input type='number' name='phillypoundcake' value='phillypoundcake'>");
+    sidesForm.append('<br>');
+    sidesForm.append("<label for='avocadoToast'>Avocado Toast (Healthy Side) $2</label>");
+    sidesForm.append("<input type='number' name='avocadotoast' value='avocadotoast'>");
+    sidesForm.append('<br>');
+    sidesForm.append("<label for='bureek'>Bureek (Spinach & Cheese Side) $3</label>");
+    sidesForm.append("<input type='number' name='bureek' value='bureek'>");
+    sidesForm.append('<br><br>');
+    sidesForm.append('<input type="submit" value="Select Sides">');
+    sidesForm.append('<br><br>');
+
+    sidesItem.append('</form>');
 
     foodRow.append('</div>');
 
