@@ -1,0 +1,5 @@
+Cloning into '/home/alaweenies/alaweenies'...
+fatal: could not read Username for 'https://github.com': No such device or address
+Running command: /usr/local/cpanel/3rdparty/bin/git clone --origin=origin https://github.com/DannyDore96/Alaweenies.git /home/alaweenies/alaweenies
+
+/home/alaweenies/alaweenies may exist, and may need to be cleaned up.

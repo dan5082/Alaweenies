@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="xxx">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" href="login.css">
+
+    <title>Alaweenie's: Online Delivery</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a id="navSiteName" class="navbar-brand" href="../index.html">Alaweenie's</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                </ul>
+            </div>  
+    </nav>
+
+    <div class="jumbotron text-center">
+        <h1 id="welcomeOnline">Online Delivery</h1>
+        <h3>Sign In or Sign Up</h3>
+    </div>
+
+    <div id="loginContainer" class="container">
+        <div class="row">
+            <div class="col-sm-5">
+            </div>
+            <div id="loginBox" class="col-sm-5">
+                <button id="signInButt" type="submit" class="btn btn-primary">Sign In</button>
+                <button id="signUpButt" type="submit" class="btn btn-success">Sign Up</button>    
+            </div>
+            <div class="col-sm-5">
+            </div>
+          </div>      
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- JS Files -->
+    <script defer src="https://use.fontawesome.com/releases/v5.4.2/js/all.js" integrity="sha384-wp96dIgDl5BLlOXb4VMinXPNiB32VYBSoXOoiARzSTXY+tsK8yDTYfvdTyqzdGGN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script>
+    
+        $(function () {
+    
+    //This is a function to launch the sign up feature:
+    $('#signUpButt').click(function () {
+        //Remove both the sign up and sign in button:
+        $("#signInButt").remove();
+        $("#signUpButt").remove();
+
+        //Add the sign up page:
+        var loginBox = $("#loginBox");
+
+        loginBox.append("<form id='signupForm' class='form-signin'>");
+
+        var signUpForm = $("#signupForm");
+
+        signUpForm.append("<div id='firstNameArea' class='form-group'>");
+        var emailArea = $("#firstNameArea");
+        emailArea.append('<label for="firstName">First Name</label>');
+        emailArea.append('<input type="text" class="form-control" id="firstNameInput" name="firstName" placeholder="Taylor" required>');
+        signUpForm.append('</div>');
+
+        signUpForm.append("<div id='lastNameArea' class='form-group'>");
+        var lastNameArea = $("#lastNameArea");
+        lastNameArea.append('<label for="lastName">Last Name</label>');
+        lastNameArea.append('<input type="text" class="form-control" id="lastNameInput" name="lastName" placeholder="Smith" required>');
+        signUpForm.append('</div>');
+
+        signUpForm.append("<div id='emailArea' class='form-group'>");
+        var emailArea = $("#emailArea");
+        emailArea.append('<label for="email">Email Address</label>');
+        emailArea.append('<input type="email" class="form-control" id="emailInput" name="email" placeholder="taylorsmith@outlook.com" required>');
+        signUpForm.append('</div>');
+
+        signUpForm.append("<div id='passwordArea' class='form-group'>");
+        var passwordArea = $("#passwordArea");
+        passwordArea.append('<label for="password">Password</label>');
+        passwordArea.append('<input type="password" class="form-control" id="passwordInput" name="password" placeholder="********" required>');
+        signUpForm.append('</div>');
+
+        signUpForm.append("<div id='phoneNumberArea' class='form-group'>");
+        var phoneNumberArea = $("#phoneNumberArea");
+        phoneNumberArea.append('<label for="phoneNumber">Phone Number</label>');
+        phoneNumberArea.append('<input type="tel" class="form-control" id="phoneNumberInput" name="phoneNumber" placeholder="123-456-7890" required>');
+        signUpForm.append('</div>');
+
+        signUpForm.append("<div id='dateOfBirthArea' class='form-group'>");
+        var dobArea = $("#dateOfBirthArea");
+        dobArea.append('<label for="dateOfBirth">Date of Birth</label>');
+        dobArea.append('<input type="date" class="form-control" id="dateOfBirthInput" name="dob" placeholder="mm/dd/yyyy" required>');
+        signUpForm.append('</div>');;
+
+        signUpForm.append("<div id='preferredLocationArea' class='form-group'>");
+        var locationArea = $("#preferredLocationArea");
+        locationArea.append('<label for="preferredLocation">Preferred Location</label>');
+        locationArea.append('<select class="form-control" name = "preferredLocation" id="preferredLocationInput">');
+
+        var preferredLocationInput = $("#preferredLocationInput");
+        preferredLocationInput.append('<option value="0">Champaign, IL</option>');
+        preferredLocationInput.append('<option value="1">Chicago, IL</option>');
+        preferredLocationInput.append('<option value="2">Philidelphia, PA</option>');
+        preferredLocationInput.append('<option value="3">Portland, OR</option>');
+        locationArea.append('</select>');
+        signUpForm.append('</div>');
+
+        signUpForm.append('<button id="registerButt" type="submit" class="btn btn-success">Register</button>');
+        loginBox.append("</form>");
+        loginBox.append('<a id="backButt" href="" role="button" class="btn btn-secondary">Back</a>');
+        
+        signUpForm.submit((e) => {
+           e.preventDefault(); //Prevents stupid redirection to home login.
+        });
+    })
+
+    //This is a function to launch the login feature:
+    $('#signInButt').click(function () {
+        //Remove both the sign up and sign in button:
+        $("#signInButt").remove();
+        $("#signUpButt").remove();
+
+        //Add the log in page:
+        var loginBox = $("#loginBox");
+        
+        loginBox.append("<form id='loginForm'>");
+
+        var loginForm = $("#loginForm");
+
+        loginForm.append("<div id='emailArea' class='form-group'>");
+        var emailArea = $("#emailArea");
+        emailArea.append('<label for="exampleInputEmail1">Email address</label>');
+        emailArea.append('<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>');
+        loginForm.append('</div>');
+
+        loginForm.append("<div id='passwordArea' class='form-group'>");
+        var passwordArea = $("#passwordArea");
+        passwordArea.append('<label for="exampleInputPassword1">Password</label>');
+        passwordArea.append('<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>');
+        loginForm.append('</div>');
+
+        loginForm.append('<button id="loginButt" class="btn btn-primary">Login</button>');
+        loginBox.append("</form>");
+        loginBox.append('<a id="backButt" href="" role="button" class="btn btn-secondary">Back</a>');
+        
+        loginForm.submit((e) => {
+           e.preventDefault(); //Prevents stupid redirection to home login.
+        });
+        
+    })
+    
+    $(document).on('click', '#loginButt', function() {
+        email = $('#exampleInputEmail1').val();
+        password = $('#exampleInputPassword1').val();
+        $.get('/login/login_user', {email: email, password: password}, function(data) {
+            if (data.login == 'false') {
+            
+            } else {
+                //Go to the ordering page
+                redirectUrl = "http://alaweenies.web.illinois.edu/order/?customerId=" + data.customerId;
+                window.location = redirectUrl;
+            }
+        });
+    });
+    
+    $(document).on('click', '#registerButt', function() {
+        firstName = $('#firstNameInput').val();
+        lastName = $('#lastNameInput').val();
+        email = $('#emailInput').val();
+        password = $('#passwordInput').val();
+        phoneNumber = $('#phoneNumberInput').val();
+        dob = $('#dateOfBirthInput').val();
+        preferredLocation = $('#preferredLocationInput').val();
+        $.get('/login/check_email', {email: email}, function(data) {
+            if (data.email_exists == 'false') {
+                $.get('/login/signup_user', 
+                    {firstName : firstName,
+                    lastName : lastName,
+                    email: email, 
+                    password: password,
+                    phoneNumber : phoneNumber,
+                    dob : dob,
+                    preferredLocation : preferredLocation}, function(data) {
+                    
+                        if(data.success == 'true') {
+                            //Go to the ordering page
+                            redirectUrl = "http://alaweenies.web.illinois.edu/order/?customerId=" + data.customerId;
+                            window.location = redirectUrl;
+                        }
+                }); 
+            }
+        });
+    });
+});
+    </script>
+  </body>
+</html>

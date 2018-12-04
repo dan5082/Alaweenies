@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" href="login.css">
+
+    <title>Alaweenie's: Online Ordering</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a id="navSiteName" class="navbar-brand" href="../index.html">Alaweenie's</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                </ul>
+            </div>  
+    </nav>
+
+    <div class="jumbotron text-center">
+        <h1 id="welcomeOnline">Online Ordering & Delivery</h1>
+    </div>
+   
+    <div id="logincontainer" class="container">
+            <div class="row">
+              <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Sign In or Sign Up</h5>
+                    <form class="form-signin">
+                      <div class="form-label-group">
+                        Email:
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <label for="inputEmail"></label>
+                      </div>
+        
+                      <div class="form-label-group">
+                        Password:
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <label for="inputPassword"></label>
+                      </div>
+        
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">Remember password</label>
+                      </div>
+                      <button class="btn btn-lg btn-primary btn-block text-uppercase" id="loginButton" type="submit">Sign in</button>
+                      <button class="btn btn-lg btn-success btn-block text-uppercase" id="signupButton" type="submit">Sign Up</button>
+                      <hr class="my-4">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- JS Files -->
+    <script defer src="https://use.fontawesome.com/releases/v5.4.2/js/all.js" integrity="sha384-wp96dIgDl5BLlOXb4VMinXPNiB32VYBSoXOoiARzSTXY+tsK8yDTYfvdTyqzdGGN" crossorigin="anonymous"></script>
+    <script src="login.js"></script>
+    % load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            console.log("blah");
+            
+            $('#loginButton').click(function() {
+                email = $('#inputEmail').val();
+                password = $('#inputPassword').val();
+                $.get('/login/login_user', {email: email, password: password}, function(data) {
+                    if (data.login == 'false') {
+                        console.log('login failed');
+                    } else {
+                        console.log('login successful');
+                        console.log(data.customerId); // This should be the customerID
+                        // go to the ordering page
+                        redirectUrl = "http://alaweenies.web.illinois.edu/order/?customerId=" + data.customerId[0]
+                        window.location.replace(redirectUrl);
+                    }
+                }); 
+            });
+            
+            $('#signupButton').click(function() {
+                email = $('#inputEmail').val();
+                password = $('#inputPassword').val();
+                $.post('/login/signup_user', {email: email, password: password}, function(data) {
+                     $('#output').text(data);
+                }); 
+            });
+            
+        });
+    </script>
+  </body>
+</html>

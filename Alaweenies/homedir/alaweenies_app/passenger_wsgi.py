@@ -1,0 +1,1 @@
+from alaweenies_app.wsgi import application

@@ -1,0 +1,1 @@
+CREATE USER "alaweenies" WITH PASSWORD E'md5f387b96758c36fce986b98ef2dcc7e1a';

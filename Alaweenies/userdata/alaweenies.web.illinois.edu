@@ -1,0 +1,26 @@
+--- 
+customlog: 
+  - 
+    format: combined
+    target: /etc/apache2/logs/domlogs/alaweenies.web.illinois.edu
+  - 
+    format: "\"%{%s}t %I .\\n%{%s}t %O .\""
+    target: /etc/apache2/logs/domlogs/alaweenies.web.illinois.edu-bytes_log
+documentroot: /home/alaweenies/public_html
+group: alaweenies
+hascgi: 1
+homedir: /home/alaweenies
+ip: 10.225.2.41
+owner: webhostingsvc
+phpopenbasedirprotect: 1
+port: 80
+scriptalias: 
+  - 
+    path: /home/alaweenies/public_html/cgi-bin
+    url: /cgi-bin/
+serveradmin: webmaster@alaweenies.web.illinois.edu
+serveralias: mail.alaweenies.web.illinois.edu www.alaweenies.web.illinois.edu
+servername: alaweenies.web.illinois.edu
+usecanonicalname: 'Off'
+user: alaweenies
+userdirprotect: ''

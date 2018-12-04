@@ -1,0 +1,6 @@
+SHELL="/bin/bash"
+0 1 * * * /home/alaweenies/alaweenies_app/run_coffee_modifier.sh
+
+SHELL="/bin/bash"
+* * * * * sh /home/alaweenies/alaweenies_app/run_coffee_modifier.sh
+

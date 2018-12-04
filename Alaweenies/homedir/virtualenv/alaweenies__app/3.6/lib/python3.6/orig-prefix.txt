@@ -1,0 +1,1 @@
+/opt/alt/python36

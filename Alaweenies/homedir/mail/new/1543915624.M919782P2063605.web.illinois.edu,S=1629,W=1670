@@ -1,0 +1,41 @@
+Return-Path: <alaweenies@web.illinois.edu>
+Delivered-To: alaweenies@web.illinois.edu
+Received: from web.illinois.edu
+	by web.illinois.edu with LMTP id 0O7INmhIBlz1fB8ATivVWg
+	for <alaweenies@web.illinois.edu>; Tue, 04 Dec 2018 03:27:04 -0600
+Return-path: <alaweenies@web.illinois.edu>
+Envelope-to: alaweenies@web.illinois.edu
+Delivery-date: Tue, 04 Dec 2018 03:27:04 -0600
+Received: from alaweenies by web.illinois.edu with local (Exim 4.91)
+	(envelope-from <alaweenies@web.illinois.edu>)
+	id 1gU6yu-008nkd-SW
+	for alaweenies@web.illinois.edu; Tue, 04 Dec 2018 03:27:04 -0600
+From: "(Cron Daemon)" <alaweenies@web.illinois.edu>
+To: alaweenies@web.illinois.edu
+Subject: Cron <alaweenies@web> sh /home/alaweenies/alaweenies_app/run_coffee_modifier.sh
+Content-Type: text/plain; charset=UTF-8
+Auto-Submitted: auto-generated
+Precedence: bulk
+X-Cron-Env: <XDG_SESSION_ID=c39>
+X-Cron-Env: <XDG_RUNTIME_DIR=/run/user/2012>
+X-Cron-Env: <LANG=en_US.UTF-8>
+X-Cron-Env: <SHELL=/bin/bash>
+X-Cron-Env: <HOME=/home/alaweenies>
+X-Cron-Env: <PATH=/usr/bin:/bin>
+X-Cron-Env: <LOGNAME=alaweenies>
+X-Cron-Env: <USER=alaweenies>
+Message-Id: <E1gU6yu-008nkd-SW@web.illinois.edu>
+Date: Tue, 04 Dec 2018 03:27:04 -0600
+
+A pound of unroasted coffee would cost us about $ 3.3254999999999995
+3.1 Per kW/hour electric cost at current prices
+11 Pound per batch
+For labor we would pay approximately:  7.199999999999999
+Batch Electricity cost 0.3906
+12 pounds of roasted coffee cost: 54.30599999999999
+So one completed pound is: 4.525499999999999
+Our price Modifier will be +$ 0.18
+Cursor: 
+<pymysql.cursors.Cursor object at 0x7fd5d44d6ac8>
+Description: 
+None

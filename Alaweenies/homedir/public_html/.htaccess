@@ -1,0 +1,5 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/alaweenies/alaweenies_app"
+PassengerBaseURI "/"
+PassengerPython "/home/alaweenies/virtualenv/alaweenies__app/3.6/bin/python3.6"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END

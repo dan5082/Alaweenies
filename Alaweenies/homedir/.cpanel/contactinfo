@@ -1,0 +1,22 @@
+---
+"email": 'ddore3@illinois.edu'
+"ip": '98.228.62.214'
+"notify_account_authn_link": 1
+"notify_account_authn_link_notification_disabled": 1
+"notify_account_login": 0
+"notify_account_login_for_known_netblock": 0
+"notify_account_login_notification_disabled": 0
+"notify_autossl_expiry": 1
+"notify_autossl_expiry_coverage": 1
+"notify_autossl_renewal_coverage": 1
+"notify_autossl_renewal_coverage_reduced": 1
+"notify_autossl_renewal_uncovered_domains": 1
+"notify_contact_address_change": 1
+"notify_contact_address_change_notification_disabled": 1
+"notify_disk_limit": 1
+"notify_password_change": 1
+"notify_password_change_notification_disabled": 1
+"notify_ssl_expiry": 1
+"origin": 'cpanel'
+"pushbullet_access_token": ''
+"second_email": ''

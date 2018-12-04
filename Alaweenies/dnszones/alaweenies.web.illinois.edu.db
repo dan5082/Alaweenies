@@ -1,0 +1,21 @@
+; cPanel first:11.72.0.10 (update_time):1539307265 11.72.0.10: Cpanel::ZoneFile::VERSION:1.3 hostname:web.illinois.edu latest:11.72.0.10
+; Zone file for alaweenies.web.illinois.edu
+$TTL 14400
+@      86400	IN      SOA     ns1.illinois.edu. webhosting-cpanelsvc.illinois.edu. (
+		2018101200	; serial, todays date+todays
+		3600		; refresh, seconds
+		7200		; retry, seconds
+		1209600		; expire, seconds
+		86400 )		; minimum, seconds
+
+alaweenies.web.illinois.edu. 86400 IN NS ns1.illinois.edu.
+alaweenies.web.illinois.edu. 86400 IN NS ns2.illinois.edu.
+
+
+alaweenies.web.illinois.edu. IN A 18.220.149.166
+
+alaweenies.web.illinois.edu. IN MX 0 alaweenies.web.illinois.edu.
+
+mail IN CNAME alaweenies.web.illinois.edu.
+www IN CNAME alaweenies.web.illinois.edu.
+ftp IN A 18.220.149.166

@@ -1,0 +1,18 @@
+--- 
+documentroot: /home/alaweenies/public_html
+group: alaweenies
+hascgi: 1
+homedir: /home/alaweenies
+ip: 10.225.2.41
+ipv6: ~
+owner: webhostingsvc
+phpopenbasedirprotect: ~
+port: 443
+secruleengineoff: ~
+serveradmin: webmaster@alaweenies.web.illinois.edu
+serveralias: mail.alaweenies.web.illinois.edu www.alaweenies.web.illinois.edu
+servername: alaweenies.web.illinois.edu
+ssl: 1
+usecanonicalname: 'Off'
+user: alaweenies
+userdirprotect: ''

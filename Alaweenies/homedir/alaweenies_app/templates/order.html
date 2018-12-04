@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" href="order.css">
+
+    <title>Alaweenie's: Online Delivery</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a id="navSiteName" class="navbar-brand" href="../index.html">Alaweenie's</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                </ul>
+            </div>  
+    </nav>
+
+    <div class="jumbotron text-center">
+        <h1 id="welcomeOnline">Online Delivery</h1>
+        <h3 id="name"></h3>
+        <div id="input" align="center">Choose a Location:
+            <select id="location">
+                    <option value="0">Champaign, IL</option>
+                    <option value="1">Chicago, IL</option>
+                    <option value="2">Philidelphia, PA</option>
+                    <option value="3">Portland, OR</option>
+            </select>
+</div>
+    </div>
+
+    <div id="bootstrapcontainer" class="container">
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script>
+        /*
+Project for CS411 (Database Systems) at the University of Illinois
+Alaweenie's Hot Dogs & Coffee Online Ordering & Delivery App
+Developed by Danny Dore, Daniel Niewierowski, Justin Isla, and Aayush Mishra
+2018
+*/
+
+/*
+-----------------------------------------------------------------------------
+Jquery Function that generates the applet display at the load of page:
+-----------------------------------------------------------------------------
+*/
+//Arrays for items and quantities
+    var dogOrderArray = [false, false, false, false, false, false];
+    var dogNamesArray;
+    var dogsQuantityArray;
+    var hotDogSum = 0;
+    var hotDogOrderList;
+    
+    var coffeeOrderArray = [false, false, false, false, false, false];
+    var coffeeNamesArray;
+    var coffeeQuantityArray;
+    var coffeeSum = 0;
+    var coffeeOrderList;
+    
+    var sidesOrderArray = [false, false, false, false, false, false];
+    var sidesNamesArray;
+    var sidesQuantityArray;
+    var sidesSum = 0;
+    var sidesOrderList;
+    
+    var totalPrice = 0;
+
+$(function () {
+    var container = $('#bootstrapcontainer');
+
+    //Draw the food row:
+    container.append(" <div id='foodRow' class='row'>");
+    var foodRow = $('#foodRow');
+
+    //Hot dog info:
+    foodRow.append("<h3>Hot Dogs:</h3>");
+    foodRow.append("<div id='hotDogCol' class='col-sm-2'>");
+    
+    var hotDogItem = $('#hotDogCol');
+    hotDogItem.append('<form id="hotDogform" class="form-group">');
+
+    var hotDogForm = $('#hotDogform');
+    hotDogForm.append("<div class='form-group'");
+    hotDogForm.append("<label id='hd1' for='alaweenie'>The Alaweenie $10</label>");
+    hotDogForm.append("<input type='number' id='alaweenieInput' name='alaweenieQuantity' min='0' value='0'>");
+    hotDogForm.append('</div>');
+    hotDogForm.append("<div class='form-group'");
+    hotDogForm.append("<label id='hd2' for='portlandia'>The Portlandia $3</label>");
+    hotDogForm.append("<input type='number' id='portlandiaInput' name='portlandiaQuantity' min='0' value='0'>");
+    hotDogForm.append('</div>');
+    hotDogForm.append("<div class='form-group'");
+    hotDogForm.append("<label id='hd3' for='phillyCheese'>Philly Cheese $6</label>");
+    hotDogForm.append("<input type='number' id='phillyInput' name='phillyQuantity' min='0' value='0'>");
+    hotDogForm.append('</div>');
+    hotDogForm.append("<div class='form-group'");
+    hotDogForm.append("<label id='hd4' for='chicagoStyleHotDog'>Chicago-Style $4</label>");
+    hotDogForm.append("<input type='number' id='chicagoInput' name='chicagoQuantity' min='0' value='0'>");
+    hotDogForm.append('</div>');
+    hotDogForm.append("<div class='form-group'");
+    hotDogForm.append("<label id='hd5' for='champaignCornDog'>Champaign Corn Dog $2</label>");
+    hotDogForm.append("<input type='number' id='champaignInput' name='champaignQuantity' min='0' value='0'>");
+    hotDogForm.append('</div>');
+    hotDogForm.append("<div class='form-group'");
+    hotDogForm.append("<label id='hd6' for='halloweenie'>Halloweenie $5</label>");
+    hotDogForm.append("<input type='number' id='halloweenieInput' name='halloweenieQuantity' min='0' value='0'>");
+    hotDogForm.append('</div>');
+    hotDogForm.append('<input type="button" class="btn btn-danger btn-sm" id="hotDogSubmit" value="Select Hot Dog(s)">');
+  
+    hotDogForm.submit((e) => {
+        e.preventDefault(); //Prevents stupid redirection to home login.
+     });
+    
+    hotDogItem.append('</form>');
+
+    foodRow.append('</div>');
+
+    //Coffee info:
+    foodRow.append("<h3>Coffee:</h3>");
+    foodRow.append("<div id='coffeeCol' class='col-sm-2'>");
+
+    var coffeeItem = $('#coffeeCol');
+    coffeeItem.append('<form id="coffeeForm" class="form-group">');
+    
+    var coffeeForm = $('#coffeeForm');
+    coffeeForm.append("<div class='form-group'");
+    coffeeForm.append("<label id='c1' for='arabic'>Arabic <span id='c1cost'>$2</span></label>");
+    coffeeForm.append("<input type='number' id='arabicInput' name='arabicQuantity' min='0' max='50' value='0'>");
+    coffeeForm.append('</div>');
+    coffeeForm.append("<div class='form-group'");
+    coffeeForm.append("<label id='c2' for='cappuccino'>Cappuccino <span id='c2cost'>$3</span></label>");
+    coffeeForm.append("<input type='number' id='cappuccinoInput' name='cappuccinoQuantity' min='0' max='50' value='0'>");
+    coffeeForm.append('</div>');
+    coffeeForm.append("<div class='form-group'");
+    coffeeForm.append("<label id='c3' for='mocha'>Mocha <span id='c3cost'>$3</span></label>");
+    coffeeForm.append("<input type='number' id='mochaInput' name='mochaQuantity' min='0' max='50' value='0'>");
+    coffeeForm.append('</div>');
+    coffeeForm.append("<div class='form-group'");
+    coffeeForm.append("<label id='c4' for='espresso'>Espresso <span id='c4cost'>$2</span></label>");
+    coffeeForm.append("<input type='number' id='espressoInput' name='espressoQuantity' min='0' max='50' value='0'>");
+    coffeeForm.append('</div>');
+    coffeeForm.append("<div class='form-group'");
+    coffeeForm.append("<label id='c5' for='latte'>Latte <span id='c5cost'>$3</span></label>");
+    coffeeForm.append("<input type='number' id='latteInput' name='latteQuantity' min='0' max='50' value='0'>");
+    coffeeForm.append('</div>');
+    coffeeForm.append("<div class='form-group'");
+    coffeeForm.append("<label id='c6' for='weeklyFlavor'>Flavor Of The Week <span id='c6cost'>$5</span></label>");
+    coffeeForm.append("<input type='number' id='weeklyFlavorInput' name='weeklyFlavorQuantity' min='0' max='50' value='0'>");
+    coffeeForm.append('</div>');
+    coffeeForm.append('<input type="button" class="btn btn-dark btn-sm" id="coffeeSubmit" value="Select Coffee(s)">');
+
+    coffeeForm.submit((e) => {
+        e.preventDefault(); //Prevents stupid redirection to home login.
+     });
+
+    coffeeItem.append('</form>');
+
+    foodRow.append('</div>');
+
+    //Sides info:
+    foodRow.append("<h3>Sides:</h3>");
+    foodRow.append("<div id='sidesCol' class='col-sm-2'>");
+
+    var sidesItem = $('#sidesCol');
+    sidesItem.append('<form id="sidesForm" class="form-group">');
+
+    var sidesForm = $('#sidesForm');
+    
+    sidesForm.append("<div class='form-group'");
+    sidesForm.append("<label id='s1' for='frenchFries'>French Fries $2</label>");
+    sidesForm.append("<input type='number' id='friesInput' name='friesQuantity' min='0' max='50' value='0'>");
+    sidesForm.append('</div>');
+    sidesForm.append("<div class='form-group'");
+    sidesForm.append("<label id='s2' for='voodoodonut'>VooDoo Donut $4</label>");
+    sidesForm.append("<input type='number' id='donutInput' name='donutQuantity' min='0' max='50' value='0'>");
+    sidesForm.append('</div>');
+    sidesForm.append("<div class='form-group'");
+    sidesForm.append("<label id='s3' for='deepDishBites'>Deep Dish Pizza Bites $5</label>");
+    sidesForm.append("<input type='number' id='pizzaInput' name='pizzaQuantity' min='0' max='50' value='0'>");
+    sidesForm.append('</div>');
+    sidesForm.append("<div class='form-group'");
+    sidesForm.append("<label id='s4' for='phillyPoundCake'>Philly Pound Cake $3</label>");
+    sidesForm.append("<input type='number' id='cakeInput' name='cakeQuantity' min='0' max='50' value='0'>");
+    sidesForm.append('</div>');
+    sidesForm.append("<div class='form-group'");
+    sidesForm.append("<label id='s5' for='avocadoToast'>Avocado Toast $2</label>");
+    sidesForm.append("<input type='number' id='toastInput' name='toastQuantity' min='0' max='50' value='0'>");
+    sidesForm.append('</div>');
+    sidesForm.append("<div class='form-group'");
+    sidesForm.append("<label id='s6' for='bureek'>Bureek $3</label>");
+    sidesForm.append("<input type='number' id='bureekInput' name='bureekQuantity' min='0' max='50' value='0'>");
+    sidesForm.append('</div>');
+    sidesForm.append('<input type="submit" class ="btn btn-warning btn-sm" id="sidesSubmit" value="Select Side(s)">');
+   
+    sidesForm.submit((e) => {
+        e.preventDefault(); //Prevents stupid redirection to home login.
+     });
+
+    sidesItem.append('</form>');
+
+    foodRow.append('</div>');
+
+    //Make the legend column:
+    foodRow.append("<h3>Legend:</h3>");
+
+    foodRow.append("<div id='legendCol' class='col-sm-1'>");
+
+    var legendItem = $('#legendCol');
+    legendItem.append('<ul id="legendList">Legend:');
+
+    var legendList = $('#legendList');
+    legendList.append('<li>Highlighted: Most popular item type at location</li>');
+
+    legendItem.append('</ul>');
+
+    foodRow.append("</div>");
+    container.append("</div>");
+
+    //Add the order summary row:
+    container.append(" <div id='summaryRow' class='row'>");
+    var summaryRow = $('#summaryRow');
+
+    summaryRow.append("<h3>Order Summary:</h3>");
+    summaryRow.append("<div id='orderCol' class='col-sm-2'>");
+
+    var orderItem = $('#orderCol');
+    orderItem.append('<ul id="orderList">Order:');
+
+    var orderList = $("#orderList");
+    orderList.append("<li id='dogsOrder'></li>");
+    orderList.append("<li id='coffeeOrder'></li>");
+    orderList.append("<li id='sidesOrder'></li>");
+    orderList.append("<li id='totalOrder'>Total Order</li>");
+    orderItem.append("</ul>");
+    
+    summaryRow.append('</div>');
+
+    summaryRow.append("<div id='priceCol' class='col-sm-3'>");
+
+    var priceItem = $('#priceCol');
+    priceItem.append('<ul id="priceList">Totals:');
+
+    var priceList = $("#priceList");
+    priceList.append("<li id='dogsPrice'>$0.00</li>");
+    priceList.append("<li id='coffeePrice'>$0.00</li>");
+    priceList.append("<li id='sidesPrice'>$0.00</li>");
+    priceList.append("<li id='totalPrice'>$0.00</li>");
+    priceList.append("</ul>");
+    
+    summaryRow.append('</div>');
+
+    //Add the checkout info:
+    summaryRow.append("<div id='checkoutCol' class='col-sm-3'>");
+
+    var checkoutItem = $('#checkoutCol');
+    checkoutItem.append('<h3>Checkout:</h3>');
+    checkoutItem.append('<input type="button" class="btn btn-primary btn-sm"id="checkoutButton" value="Checkout">');
+
+    summaryRow.append("</div>");
+
+    container.append("</div>");
+
+    //Function to update the cost and order section of Hot Dogs:
+    $('#hotDogSubmit').click(function () {
+        //Get the value of each hot dog menu item:
+        var alaweenie = parseInt($('#alaweenieInput').val());
+        var portlandia = parseInt($('#portlandiaInput').val());
+        var philly = parseInt($('#phillyInput').val());
+        var chicago = parseInt($('#chicagoInput').val());
+        var champaign = parseInt($('#champaignInput').val());
+        var halloweenie = parseInt($('#halloweenieInput').val());
+
+        //Display the items and the quantities based on what is selected:
+        //Create an array that takes bool values:
+        dogNamesArray = ["Alaweenie", "Portlandia", "Philly Cheese Dog", "Chicago-Style", "Chamapaign Corn Dog", "Halloweenie"];
+        dogsQuantityArray = [alaweenie, portlandia, philly, chicago, champaign, halloweenie];
+        
+        //Set values to true based on which hot dogs are ordered:
+        if (alaweenie > 0) {
+            dogOrderArray[0] = true;
+        } if (portlandia > 0) {
+            dogOrderArray[1] = true;
+        } if (philly > 0) {
+            dogOrderArray[2] = true;
+        } if (chicago > 0) {
+            dogOrderArray[3] = true;
+        } if (champaign > 0) {
+            dogOrderArray[4] = true;
+        } if (halloweenie > 0) {
+            dogOrderArray[5] = true;
+        }
+
+        //Iterate through the list and update the orders list item:
+        hotDogOrderList = "";
+        for (var dogI = 0; dogI < 6; dogI++) {
+            if (dogOrderArray[dogI] == true) {
+                //Add the dog name and the quantity ordered:
+                hotDogOrderList += dogNamesArray[dogI] + " (" + dogsQuantityArray[dogI] + ")," + " ";
+            }
+        }
+
+        //Calculate the hot dog cost:
+        //Condition check: Values less than zero:
+        var alaweenieCost = alaweenie * 10;
+        var portlandiaCost = portlandia * 3;
+        var phillyCost = philly * 6;
+        var chicagoCost = chicago * 4;
+        var champaignCost = champaign * 2;
+        var halloweenieCost = halloweenie * 5;
+
+        if (alaweenieCost < 0) {
+            alaweenieCost = 0;
+        } if (portlandiaCost < 0) {
+            portlandiaCost = 0;
+        } if (phillyCost < 0) {
+            phillyCost = 0;
+        } if (chicagoCost < 0) {
+            chicagoCost = 0;
+        } if (champaignCost < 0) {
+            champaignCost = 0;
+        } if (halloweenieCost < 0) {
+            halloweenieCost = 0;
+        }
+
+        hotDogSum = alaweenieCost + portlandiaCost + phillyCost + chicagoCost + champaignCost + halloweenieCost;
+
+        //Update the order list for hot dogs & the price:
+        document.getElementById("dogsOrder").innerHTML = hotDogOrderList;
+        document.getElementById("dogsPrice").innerHTML = "$" + hotDogSum + ".00";
+        totalPrice = hotDogSum + coffeeSum + sidesSum;
+        document.getElementById("totalPrice").innerHTML = "$" + totalPrice.toFixed(2);
+    });
+
+    //Function to update the cost and order section of Coffee:
+    $('#coffeeSubmit').click(function () {
+        //Get the value of each coffee menu item:
+        var arabic = parseInt($('#arabicInput').val());
+        var cappuccino = parseInt($('#cappuccinoInput').val());
+        var mocha = parseInt($('#mochaInput').val());
+        var espresso = parseInt($('#espressoInput').val());
+        var latte = parseInt($('#latteInput').val());
+        var weeklyFlavor = parseInt($('#weeklyFlavorInput').val());
+
+        var arabicPrice = parseFloat($('#c1cost').html().substring(1));
+        var cappuccinoPrice = parseFloat($('#c2cost').html().substring(1));
+        var mochaPrice = parseFloat($('#c3cost').html().substring(1));
+        var espressoPrice = parseFloat($('#c4cost').html().substring(1));
+        var lattePrice = parseFloat($('#c5cost').html().substring(1));
+        var weeklyFlavorPrice = parseFloat($('#c6cost').html().substring(1));
+
+        //Display the items and the quantities based on what is selected:
+        //Create an array that takes bool values:
+        coffeeOrderArray = [false, false, false, false, false, false];
+        coffeeNamesArray = ["Arabic", "Cappuccino", "Mocha", "Espresso", "Latte", "Weekly Flavor"];
+        coffeeQuantityArray = [arabic, cappuccino, mocha, espresso, latte, weeklyFlavor];
+        
+        //Set values to true based on which coffees are ordered:
+        if (arabic > 0) {
+            coffeeOrderArray[0] = true;
+        } if (cappuccino > 0) {
+            coffeeOrderArray[1] = true;
+        } if (mocha > 0) {
+            coffeeOrderArray[2] = true;
+        } if (espresso > 0) {
+            coffeeOrderArray[3] = true;
+        } if (latte > 0) {
+            coffeeOrderArray[4] = true;
+        } if (weeklyFlavor > 0) {
+            coffeeOrderArray[5] = true;
+        }
+
+        //Iterate through the list and update the orders list item:
+        coffeeOrderList = "";
+        for (var coffeeI = 0; coffeeI < 6; coffeeI++) {
+            if (coffeeOrderArray[coffeeI] == true) {
+                //Add the coffee name and the quantity ordered:
+                coffeeOrderList += coffeeNamesArray[coffeeI] + " (" + coffeeQuantityArray[coffeeI] + ")," + " ";
+            }
+        }
+
+        //Calculate the coffee cost:
+        var arabicCost = arabic * arabicPrice;
+        var cappuccinoCost = cappuccino * cappuccinoPrice;
+        var mochaCost = mocha * mochaPrice;
+        var espressoCost = espresso * espressoPrice;
+        var latteCost = latte * lattePrice;
+        var weeklyFlavorCost = weeklyFlavor * weeklyFlavorPrice;
+
+        if (arabicCost < 0) {
+            arabicCost = 0;
+        } if (cappuccinoCost < 0) {
+            cappuccinoCost = 0;
+        } if (mochaCost < 0) {
+            mochaCost = 0;
+        } if (espressoCost < 0) {
+            espressoCost = 0;
+        } if (latteCost < 0) {
+            latteCost = 0;
+        } if (weeklyFlavorCost < 0) {
+            weeklyFlavorCost = 0;
+        }
+
+        coffeeSum = arabicCost + cappuccinoCost + mochaCost + espressoCost + latteCost + weeklyFlavorCost;
+
+        //Update the order list for coffees & the price:
+        document.getElementById("coffeeOrder").innerHTML = coffeeOrderList;
+        document.getElementById("coffeePrice").innerHTML = "$" + coffeeSum.toFixed(2);
+        totalPrice = hotDogSum + coffeeSum + sidesSum;
+        document.getElementById("totalPrice").innerHTML = "$" + totalPrice.toFixed(2);
+    });
+
+    //Function to update the cost and order section of Sides:
+    $('#sidesSubmit').click(function () {
+        //Get the value of each sides menu item:
+        var fries = parseInt($('#friesInput').val());
+        var donut = parseInt($('#donutInput').val());
+        var pizza = parseInt($('#pizzaInput').val());
+        var cake = parseInt($('#cakeInput').val());
+        var toast = parseInt($('#toastInput').val());
+        var bureek = parseInt($('#bureekInput').val());
+
+        //Display the items and the quantities based on what is selected:
+        //Create an array that takes bool values:
+        sidesOrderArray = [false, false, false, false, false, false];
+        sidesNamesArray = ["Fries", "Donut", "Pizza Bites", "Cake", "Toast", "Bureek"];
+        sidesQuantityArray = [fries, donut, pizza, cake, toast, bureek];
+        
+        //Set values to true based on which sides are ordered:
+        if (fries > 0) {
+            sidesOrderArray[0] = true;
+        } if (donut > 0) {
+            sidesOrderArray[1] = true;
+        } if (pizza > 0) {
+            sidesOrderArray[2] = true;
+        } if (cake > 0) {
+            sidesOrderArray[3] = true;
+        } if (toast > 0) {
+            sidesOrderArray[4] = true;
+        } if (bureek > 0) {
+            sidesOrderArray[5] = true;
+        }
+
+        //Iterate through the list and update the orders list item:
+        sidesOrderList = "";
+        for (var sidesI = 0; sidesI < 6; sidesI++) {
+            if (sidesOrderArray[sidesI] == true) {
+                //Add the side name and the quantity ordered:
+                sidesOrderList += sidesNamesArray[sidesI] + " (" + sidesQuantityArray[sidesI] + ")," + " ";
+            }
+        }
+
+        //Calculate the sides cost:
+        //Condition check: less than 0 entered:
+        var friesCost = fries * 2;
+        var donutCost = donut * 4;
+        var pizzaCost = pizza * 5;
+        var cakeCost = cake * 3;
+        var toastCost = toast * 2;
+        var bureekCost = bureek * 3;
+
+        if (fries < 0) {
+            friesCost = 0;
+        } if (donut < 0) {
+            donutCost = 0;
+        } if (pizza < 0) {
+            pizzaCost = 0;
+        } if (cake < 0) {
+            cakeCost = 0;
+        } if (toast < 0) {
+            toastCost = 0;
+        } if (bureek < 0) {
+            bureekCost = 0;
+        }
+
+        sidesSum = friesCost + donutCost + pizzaCost + cakeCost + toastCost + bureekCost;
+
+        //Update the order list for sides & the price:
+        document.getElementById("sidesOrder").innerHTML = sidesOrderList;
+        document.getElementById("sidesPrice").innerHTML = "$" + sidesSum + ".00";
+        totalPrice = hotDogSum + coffeeSum + sidesSum;
+        document.getElementById("totalPrice").innerHTML = "$" + totalPrice.toFixed(2);
+    });
+    });
+
+        $(document).ready(function () {
+            // Get most popular items at current location
+            $('#bootstrapcontainer label').css("backgroundColor", "white");
+               restaurantId = $('#location').val();
+               $.get('/order/get_most_popular/', {restaurantId : restaurantId}, function(data) {
+                    $('#hd' + data.mostPopHotDog).css("background-color", "yellow");
+                    $('#c' + data.mostPopCoffee).css("background-color", "yellow");
+                    $('#s' + data.mostPopSide).css("background-color", "yellow");
+                    
+                });
+            
+            // Get coffee price modifier for today
+            $.get('/order/get_price_modifier/', {}, function(data) {
+                priceModifier = data.priceModifier;
+
+                $('#c1cost').html('$' + (2.00 + parseFloat(priceModifier)).toFixed(2))
+                $('#c2cost').html('$' + (3.00 + parseFloat(priceModifier)).toFixed(2))
+                $('#c3cost').html('$' + (3.00 + parseFloat(priceModifier)).toFixed(2))
+                $('#c4cost').html('$' + (2.00 + parseFloat(priceModifier)).toFixed(2))
+                $('#c5cost').html('$' + (3.00 + parseFloat(priceModifier)).toFixed(2))
+                $('#c6cost').html('$' + (5.00 + parseFloat(priceModifier)).toFixed(2))
+
+            });
+            
+            let searchParams = new URLSearchParams(window.location.search);
+            customerId = 1;
+            if (searchParams.has('customerId')) {
+                customerId = searchParams.get('customerId');
+            }
+            
+            $.get('/order/get_user/', {customerId : customerId}, function(data) {
+                 $('#name').text("Hello, " + data.firstName + "!");
+                 $('#location').val(data.locationId);
+                 $('#submit').click();
+            });
+            
+            restaurantId = $('#location').val();
+            $('#location').change(function() {
+                $('#bootstrapcontainer label').css("backgroundColor", "white");
+               restaurantId = $('#location').val();
+               $.get('/order/get_most_popular/', {restaurantId : restaurantId}, function(data) {
+                    $('#hd' + data.mostPopHotDog).css("backgroundColor", "yellow");
+                    $('#c' + data.mostPopCoffee).css("backgroundColor", "yellow");
+                    $('#s' + data.mostPopSide).css("backgroundColor", "yellow");
+                    
+                });
+            });
+            
+            $(document).on('click','#checkoutButton',function(){
+                let searchParams = new URLSearchParams(window.location.search);
+                var orderId = 0;
+                if (searchParams.has('orderId')) {
+                    orderId = searchParams.get('orderId');
+                }
+                
+                customerId = 1;
+                if (searchParams.has('customerId')) {
+                    customerId = searchParams.get('customerId');
+                }
+                
+                var locationId = $('#location').val();
+                
+                var order = [hotDogOrderList, coffeeOrderList, sidesOrderList, totalPrice.toFixed(2), customerId, locationId];
+                
+                $.ajax({
+                   type: "POST",
+                   data: {'dogOrderArray' : dogOrderArray, 
+                        'dogNamesArray' : dogNamesArray,
+                        'dogsQuantityArray' : dogsQuantityArray,
+                        'hotDogSum' : hotDogSum,
+                        'coffeeOrderArray' : coffeeOrderArray,
+                        'coffeeNamesArray': coffeeNamesArray,
+                        'coffeeQuantityArray' : coffeeQuantityArray,
+                        'coffeeSum' : coffeeSum.toFixed(2),
+                        'sidesOrderArray' : sidesOrderArray,
+                        'sidesNamesArray' : sidesNamesArray,
+                        'sidesQuantityArray' : sidesQuantityArray,
+                        'sidesSum' : sidesSum,
+                        'totalPrice' : totalPrice.toFixed(2),
+                        'orderId' : orderId,
+                        'customerId' : customerId,
+                        'locationId' : locationId
+                   },
+                       url: "/order/post_order/",
+                   success: function(data){
+                        redirectUrl = "http://alaweenies.web.illinois.edu/checkout/?orderId=" + data.orderId;
+                        window.location.replace(redirectUrl);
+                        window.localStorage.setItem("order", JSON.stringify(order));
+                   }
+                });
+                
+            });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+Return-Path: <alaweenies@web.illinois.edu>
+Delivered-To: alaweenies@web.illinois.edu
+Received: from web.illinois.edu
+	by web.illinois.edu with LMTP id oIqfK2k1BlwtwhUATivVWg
+	for <alaweenies@web.illinois.edu>; Tue, 04 Dec 2018 02:06:01 -0600
+Return-path: <alaweenies@web.illinois.edu>
+Envelope-to: alaweenies@web.illinois.edu
+Delivery-date: Tue, 04 Dec 2018 02:06:01 -0600
+Received: from alaweenies by web.illinois.edu with local (Exim 4.91)
+	(envelope-from <alaweenies@web.illinois.edu>)
+	id 1gU5iT-006IDx-Fs
+	for alaweenies@web.illinois.edu; Tue, 04 Dec 2018 02:06:01 -0600
+From: "(Cron Daemon)" <alaweenies@web.illinois.edu>
+To: alaweenies@web.illinois.edu
+Subject: Cron <alaweenies@web> /home/alaweenies/alaweenies_app/run_removeTopOrder.sh
+Content-Type: text/plain; charset=UTF-8
+Auto-Submitted: auto-generated
+Precedence: bulk
+X-Cron-Env: <XDG_SESSION_ID=c9836>
+X-Cron-Env: <XDG_RUNTIME_DIR=/run/user/2012>
+X-Cron-Env: <LANG=en_US.UTF-8>
+X-Cron-Env: <SHELL=/bin/bash>
+X-Cron-Env: <HOME=/home/alaweenies>
+X-Cron-Env: <PATH=/usr/bin:/bin>
+X-Cron-Env: <LOGNAME=alaweenies>
+X-Cron-Env: <USER=alaweenies>
+Message-Id: <E1gU5iT-006IDx-Fs@web.illinois.edu>
+Date: Tue, 04 Dec 2018 02:06:01 -0600
+
+/bin/bash: /home/alaweenies/alaweenies_app/run_removeTopOrder.sh: Permission denied
